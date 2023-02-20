@@ -1,11 +1,11 @@
 const Pool = require('pg').Pool
 
 const pool = new Pool({
-  user: "vegss",
-  password: "zXN0fRaWACxDFcNOkcQ4L2asgH44pkkt",
-  host: "dpg-cfpoqh14rebfdauqqt90-a",
-  port: 5432,
-  database: "todoapp_qwxd"
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  host: process.env.PGHOST,
+  port: process.env.PGPORT,
+  database: process.env.PGDATABASE
 })
 
 const getTasks = async (req, res) => {
