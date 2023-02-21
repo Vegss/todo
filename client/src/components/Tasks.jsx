@@ -7,16 +7,17 @@ const Tasks = ( {tasks, setTasks} ) => {
   const [editMode, setEditMode] = useState([false, null])
 
   const editTask = (task) => {
-      const updatedTask = {...task, content: currentTask}
-      taskService
-        .update(updatedTask)
-        .then(resTask => {
-          setTasks(tasks.map(t => t.id === task.id ? resTask : t))
-          setCurrentTask('')
-          setEditMode([false, null])
-        })
-      window.location = "/"
-    }
+    if (currentTask === '') return (alert('Cannot submit empty task'))
+    const updatedTask = {...task, content: currentTask}
+    taskService
+      .update(updatedTask)
+      .then(resTask => {
+        setTasks(tasks.map(t => t.id === task.id ? resTask : t))
+        setCurrentTask('')
+        setEditMode([false, null])
+      })
+    window.location = "/"
+  }
 
   const handleEdit = task => {
     setEditMode([true, task.id])

@@ -3,6 +3,7 @@ import taskService from '../services/tasks'
 const AddTask = ( {newTask, setNewTask, tasks, setTasks} ) => {
   
   const addTask = (event) => {
+    if (newTask === '') return (alert('Cannot submit empty task'))
     const newTaskObject = {
       content: newTask
     }
