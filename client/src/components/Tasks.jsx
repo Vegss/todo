@@ -7,7 +7,7 @@ const Tasks = ( {tasks, setTasks} ) => {
   const [editMode, setEditMode] = useState([false, null])
 
   const editTask = (task) => {
-    if (currentTask === '') return (alert('Cannot submit empty task'))
+    if (currentTask.length === 0) return (alert('Cannot submit empty task'))
     const updatedTask = {...task, content: currentTask}
     taskService
       .update(updatedTask)
